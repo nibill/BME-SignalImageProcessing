@@ -150,8 +150,8 @@ def interp_2D(img, scale_factor):
 
 
 # set arguments
-filename = 'bird.jpg'
-# filename = 'butterfly.jpg'
+#filename = 'bird.jpg'
+filename = 'butterfly.jpg'
 # filename = 'monkey_face.jpg'
 scale_factor = 1.5  # Scaling factor
 
