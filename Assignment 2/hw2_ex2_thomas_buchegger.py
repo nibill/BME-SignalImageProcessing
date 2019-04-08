@@ -49,8 +49,7 @@ def create_edge_magn_image(image, dx, dy):
 
     if np.ndim(dx) < 2:
         dx = dx.reshape(1, len(dx))
-        # print("dx dim < 2")
-        # print("img dim < 2")
+
     Dx = ex1.myconv2(image, dx)
     Dx = Dx[dx.shape[0] - 1:dx.shape[0] - 1 + image.shape[0],
             dx.shape[1] - 1:dx.shape[1] - 1 + image.shape[1]]

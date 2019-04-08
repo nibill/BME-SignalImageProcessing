@@ -33,7 +33,7 @@ def myharris(image, w_size, sigma, k):
 
     ### your code should go here ###
 
-    gauss = sp.signal.gaussian(w_size, sigma)
+    gauss = sp.signal.windows.gaussian(w_size, sigma)
     gauss = gauss.reshape(1, len(gauss))
     gauss_2d = convolve2d(gauss, np.transpose(gauss))
     image = convolve2d(image, gauss_2d, 'same')
