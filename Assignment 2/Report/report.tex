@@ -48,60 +48,133 @@
 
 %\renewcommand{\qedsymbol}{\filledbox}
 
-\title{Homework X}%replace X with the appropriate number
-\author{John Doe\\ %replace with your name
-Introduction to Signal and Image Processing
-}
-
+\title{Homework 2}%replace X with the appropriate number
+\author{Thomas Buchegger\\ %replace with your name
+Introduction to Signal and Image Processing}
 \maketitle
 
-\section{Quadratic function}
-\newtheorem{thm}{Theorem}
-\begin{thm}
-$ax^2+bx+c=0$ has 2 real roots if $D>0$.
-\end{thm}
+\section*{Abstract}
+This report is based on Homework 2 in the course Introduction to Signal and Image Processing. 
 
-\begin{proof}
-This is my proof that $ax^2+bx+c=0$ has 2 real roots if $D>0$.
-\[
-x_{1,2}=\frac{-b\pm\sqrt{D}}{4ac}
-\]
-\end{proof}
+\setcounter{tocdepth}3 % Set the depth of the table of contents to show sections and subsections only
+\tableofcontents
 
-An example of a quadratic function is shown on fig. \ref{fig:q1}.
+\pagebreak
+\section{Used Methods}
+\subsection{Linear Filtering}
+Linear filtering is used to modify a picture. This includes enhancing or removing features. Filtering is a so called neighbourhood operation, which means
+that the value of a certain pixel is based on its neighbourhood pixels.
+\newline
+An example for a linear filter would be a box filter. It calculates the arithmetic means
+based on its neighbourhood pixels for the new pixel. This leads to a blurring effect. 
 
-\begin{figure}
-\centering
-%omit extension of file. pdflatex will convert to pdf automatically.
-\includegraphics[width=0.8\textwidth]{pics/q1}
-\caption{Example of quadratic function $a=2$, $b=2.5$, $c=0.5$. Roots are highlighted in red.}
-\label{fig:q1}
+\begin{figure}[!htb]
+    \centering
+    %omit extension of file. pdflatex will convert to pdf automatically.
+    \includegraphics[width=0.8\textwidth]{pics/boxFilterExample}
+    \caption{Filtering with a box-filter of size $3 \times 3$.}
+    \label{fig:boxfilter}
+    \end{figure}
+
+\subsection{Finding edges}
+As the name suggests, the goal is to detect edges in images.
+One of the most popular edge detection algorithm is canny edge detection.
+\newline
+It consists of four steps:
+\begin{enumerate}  
+    \item Preprocessing with gauss for example
+    \begin{figure}[!htb]
+         \centering
+         \includegraphics[width=0.8\textwidth]{pics/canny1}
+         \caption{Before and after low pass filter}
+    \end{figure}
+
+    \item Gradient calculation
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.8\textwidth]{pics/canny2}
+        \caption{Before and after gradient calculation}
+    \end{figure}
+
+    \item Nonmax suppression
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.8\textwidth]{pics/canny3}
+        \caption{Before and after non max suppression}  
+    \end{figure}
+
+    \item Hysteresis thresholding
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=0.8\textwidth]{pics/canny4}
+        \caption{Before and after thresholding}
+    \end{figure}
+
+    \end{enumerate}
+
+\subsection{Corner detection}
+The goal is to detect corners in images. A corner is defined as an intersection
+between two edges. 
+
+\section{Exercises}
+\subsection{Linear Filtering}
+\subsubsection{Boxfilter}
+The function boxfilter(n) can be summarized as $np.ones((n, n)) / (n x n)$.
+
+
+\subsubsection{myconv2}
+
+
+\subsubsection{boxfilter with myconv2}
+\subsubsection{gauss1d}
+\subsubsection{gauss2d}
+\subsubsection{gconv}
+\subsubsection{More efficient convolution}
+ 
+
+\subsubsection{Computation time vs filter size experiment}
+
+\subsection{Finding edges}
+\subsubsection{gradients}
+Gradient detection is done with a high pass filter. In our excercise this is done with
+once in x and once in y direction with the help of the $myconv2$ and $gauss1d$ functions.
+The value for sigma is 1. 
+
+\subsubsection{create edge magn image}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pics/edgeMagnitudeMap}
+    \caption{Original image and its magnitude map}
 \end{figure}
 
-\section{2D convolution}
-We experiment with a box-filter and apply the built-in scipy function as in listing \ref{lst:convolve2d}. An example filtered image is shown in fig. \ref{fig:boxfilter}.
+\subsubsection{make edge map}
 
-\begin{lstlisting}[style=Python,
-  caption={My 2D convolution approach.},
-  label={lst:convolve2d}]
-from scipy import signal
-img = plt.imread('cat.jpg').astype(np.float32)
 
-def boxfilter(n):
-    # this function returns a box filter of size nxn
-    return (1./(n ** 2))*np.ones((n, n))
+\subsubsection{edge non max suppression}
+The non max suppression is the last step of the canny edge detector algorithm.
+This step is needed, bceause edges are usually larger than one pixel, so they
+get reduced to the pixel with the max. gradient.
+\newline
+This is done by iterating through the picture four times, once in each direction. 
+The currently looked at pixel is then compared to its neighbours. If it has the
+strongest gradient in [x,y], then it survives. Else it's set to 0.
 
-bsize = 10
-box_filter = boxfilter(bsize)
-conv_image_box = signal.convolve2d(img, box_filter)
-\end{lstlisting}
-
-\begin{figure}
-\centering
-%omit extension of file. pdflatex will convert to pdf automatically.
-\includegraphics[width=0.8\textwidth]{pics/q2}
-\caption{Filtering with a box-filter of size $10 \times 10$.}
-\label{fig:boxfilter}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pics/origMagNonMax}
+    \caption{Comparison of original image, image with gradients and image with non max suppression}
 \end{figure}
+
+
+\subsection{Corner detection}
+\subsubsection{myharris}
+\subsubsection{Evaluate myharris}
+\subsubsection{Evaluate myharris rot 45}
+\subsubsection{Evaluate myharris downscaled}
+\subsubsection{}
+
+\pagebreak
+
 
 \end{document}

@@ -161,6 +161,15 @@ plt.show()
 # HINT: How can we use 1D Gaussians?
 
 ### your explanation should go here ###
+# The process of performing a convolution requires K^2 operations per pixel,
+# where K is the size (width == height == K) of the convolution kernel.
+# In many cases, this operation can be speed up by first performing a 1D
+# horizontal convolution followed by a 1D vertical convolution, requiring
+# 2*K operations per pixel.
+# If this is possible, then the convolution kernel is called separable!
+# Look at the singular value decomposition (SVD) of the kernel, and if
+# only one singular value is non-zero, then it is separable.
+
 
 # 1.8
 # Computation time vs filter size experiment

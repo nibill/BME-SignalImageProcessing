@@ -1,9 +1,34 @@
 \relax 
-\@writefile{toc}{\contentsline {section}{\numberline {1}Quadratic function}{1}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}2D convolution}{1}}
-\newlabel{lst:convolve2d}{{1}{1}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}My 2D convolution approach.}{1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Example of quadratic function $a=2$, $b=2.5$, $c=0.5$. Roots are highlighted in red.}}{2}}
-\newlabel{fig:q1}{{1}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Filtering with a box-filter of size $10 \times 10$.}}{2}}
-\newlabel{fig:boxfilter}{{2}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Used Methods}{3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Linear Filtering}{3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Filtering with a box-filter of size $3 \times 3$.}}{3}\protected@file@percent }
+\newlabel{fig:boxfilter}{{1}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Finding edges}{3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Before and after low pass filter}}{3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Before and after gradient calculation}}{4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Before and after non max suppression}}{4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Before and after thresholding}}{4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Corner detection}{4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Exercises}{4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Linear Filtering}{4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Boxfilter}{4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}myconv2}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}boxfilter with myconv2}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.4}gauss1d}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.5}gauss2d}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.6}gconv}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.7}More efficient convolution}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.8}Computation time vs filter size experiment}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Finding edges}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}gradients}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}create edge magn image}{5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Original image and its magnitude map}}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}make edge map}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.4}edge non max suppression}{5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Comparison of original image, image with gradients and image with non max suppression}}{6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Corner detection}{6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}myharris}{6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Evaluate myharris}{6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}Evaluate myharris rot 45}{6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4}Evaluate myharris downscaled}{6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.5}}{6}\protected@file@percent }
