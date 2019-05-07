@@ -105,10 +105,10 @@ def point_to_line_dist(m, c, x0, y0):
 #                           Main script starts here                          #
 ##############################################################################
 
-#filename = 'pics/synthetic.jpg'
+filename = 'pics/synthetic.jpg'
 #filename = 'pics/bridge.jpg'
 #filename = 'pics/pool.jpg'
-filename = 'pics/tennis.jpg'
+#filename = 'pics/tennis.jpg'
 
 image = plt.imread(filename)
 edges = edge_map(image, 1.5)

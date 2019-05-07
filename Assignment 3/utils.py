@@ -80,7 +80,6 @@ def copy_patch(img, mask, texture, iPatchCenter, jPatchCenter, iMatchCenter, jMa
             # copy the RGB channels from the texture image to the imHole image
             if(mask[i][j]==255):
                 res[i_hole][j_hole] = texture[i_texture][j_texture]
-
     return res
 
 

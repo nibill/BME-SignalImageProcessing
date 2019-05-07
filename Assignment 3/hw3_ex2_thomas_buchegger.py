@@ -94,7 +94,7 @@ while (len(fill_indices[0])  > 0):
         # Isolate the patch to fill, and its mask
         patch_to_fill = im_filled[patch_center_i-patch_half_size:patch_center_i+patch_half_size+1,patch_center_j-patch_half_size:patch_center_j+patch_half_size+1,:]
         patch_mask = fill_region[patch_center_i-patch_half_size:patch_center_i+patch_half_size+1,patch_center_j-patch_half_size:patch_center_j+patch_half_size+1]
-
+ 
         #
         # Compute masked SSD of patch_to_fill and texture_img
         #
