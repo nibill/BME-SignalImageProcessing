@@ -70,7 +70,7 @@ assert((texture_img.shape[0] > patchSize) and
 # Initialize im_filled for texture synthesis (i.e., set fill pixels to 0)
 #
 
-im_filled = im.copy()
+im_filled = im_array.copy()
 im_filled[fill_indices] = 0
 
 #

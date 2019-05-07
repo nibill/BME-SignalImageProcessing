@@ -27,20 +27,27 @@ def compute_ssd(patch, mask, texture, patch_half_size):
     # Outputs:
     #   ssd: numpy array of size (tex_rows - 2 * patch_half_size, tex_cols - 2 * patch_half_size)
 
-    patch_rows, patch_cols = np.shape(patch)[0,1]
+    #patch_rows, patch_cols = np.shape(patch)[0,1]
+    #assert patch_rows == 2 * patch_half_size + 1 and patch_cols == 2 * patch_half_size + 1, "patch size and patch_half_size do not match"
+    #tex_rows, tex_cols = np.shape(texture)[0:1]
+    #ssd_rows = tex_rows - 2 * patch_half_size
+    #ssd_cols = tex_cols - 2 * patch_half_size
+    #ssd = np.zeros((ssd_rows, ssd_cols))
+
+    (patch_rows, patch_cols, _) = patch.shape
     assert patch_rows == 2 * patch_half_size + 1 and patch_cols == 2 * patch_half_size + 1, "patch size and patch_half_size do not match"
-    tex_rows, tex_cols = np.shape(texture)[0:1]
+    (tex_rows, tex_cols, _) = texture.shape
     ssd_rows = tex_rows - 2 * patch_half_size
     ssd_cols = tex_cols - 2 * patch_half_size
     ssd = np.zeros((ssd_rows, ssd_cols))
+
+    mask = np.stack((mask, mask, mask), axis=-1)
+
     for ind, value in np.ndenumerate(ssd):
-
-            #
-            # ADD YOUR CODE HERE
-            #
-
-            pass
-
+        patch_tex = texture[ind[0]:ind[0] + 2 * patch_half_size + 1, ind[1]:ind[1] + 2 * patch_half_size + 1]
+        patch_tex = np.muliply(patch_tex, np.nonzero(mask))
+        value = np.sum((patch - patch_tex)**2)
+        ssd[ind] = value
     return ssd
 
 
@@ -65,21 +72,22 @@ def copy_patch(img, mask, texture, iPatchCenter, jPatchCenter, iMatchCenter, jMa
     #   res: ndarray of size (im_rows, im_cols, 3)
 
     patchSize = 2 * patch_half_size + 1
-    iPatchTopLeft = iPatchCenter - patch_half_size
-    jPatchTopLeft = jPatchCenter - patch_half_size
-    iMatchTopLeft = iMatchCenter - patch_half_size
-    jMatchTopLeft = jMatchCenter - patch_half_size
+    #iPatchTopLeft = iPatchCenter - patch_half_size
+    #jPatchTopLeft = jPatchCenter - patch_half_size
+    #iMatchTopLeft = iMatchCenter - patch_half_size
+    #jMatchTopLeft = jMatchCenter - patch_half_size
+
     for i in range(patchSize):
         for j in range(patchSize):
 
-            #
-            # ADD YOUR CODE HERE
-            #
+            iImg = i + jPatchCenter - patch_half_size
+            jImg = j + jPatchCenter - patch_half_size
 
-            pass
-        pass
+            iTexImg = i + iMatchCenter - patch_half_size
+            jTexImg = j + jMatchCenter - patch_half_size
 
-    return res
+            img[iImg][jImg] = texture[iTexImg][jTexImg]
+    return img
 
 
 def find_edge(mask):
