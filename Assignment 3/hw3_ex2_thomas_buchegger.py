@@ -12,7 +12,7 @@ import imageio
 #
 
 # Change patch_half_size to change the patch size used (patch size is 2 * patch_half_size + 1)
-patch_half_size = 10
+patch_half_size = 20
 patchSize = 2 * patch_half_size + 1
 
 # Display results interactively
@@ -20,8 +20,8 @@ showResults = True
 
 # Read input image
 
-filename = 'pics/donkey'
-#filename = 'pics/tomato'
+#filename = 'pics/donkey'
+filename = 'pics/tomato'
 #filename = 'pics/yacht'
 
 # load image
